@@ -155,68 +155,73 @@ async function start() {
 setTimeout(start, 1000)
 
 function celebrate() {
+  // Create and style the canvas element
+  const canvas = document.createElement('canvas');
+  document.body.appendChild(canvas);
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.pointerEvents = 'none';
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js';
-  document.head.appendChild(script);
+  // Prevent scrolling
+  document.body.style.overflow = 'hidden';
 
-  script.onload = function doIt() {
-    const defaults = {
-      spread: 360,
-      ticks: 100,
-      gravity: 0,
-      decay: 0.94,
-      startVelocity: 30,
-    };
+  const ctx = canvas.getContext('2d');
+  const confettiCount = 100;
+  const confettiPieces = [];
 
-    const colors = window.colors || ["#bd34fe", "#41d1ff"];
-    function shoot() {
-      // @ts-ignore
-      confetti({
-        ...defaults,
-        particleCount: 30,
-        scalar: 1.2,
-        shapes: ["circle", "square"],
-        colors: colors,
-      });
+  // Create confetti pieces with random properties
+  for (let i = 0; i < confettiCount; i++) {
+    const angle = Math.random() * 2 * Math.PI;
+    const speed = Math.random() * 5 + 2;
+    confettiPieces.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 10 + 5,
+      color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`,
+      speedX: Math.cos(angle) * speed,
+      speedY: Math.sin(angle) * speed,
+      opacity: 1
+    });
+  }
 
-      // @ts-ignore
-      confetti({
-        ...defaults,
-        particleCount: 20,
-        scalar: 2,
-        shapes: ["emoji"],
-        shapeOptions: {
-          emoji: {
-            value: window.emojis || ["🍌", "🐒", "🦍"],
-          },
-        },
-      });
-      // @ts-ignore
-      confetti({
-        particleCount: 2,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-        colors: colors,
-      });
+  const animationDuration = 3000; // 3 seconds
+  const animationStartTime = Date.now();
+  const gravity = 0.05;
 
-      // @ts-ignore
-      confetti({
-        particleCount: 2,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-        colors: colors,
-      });
-    }
+  function animateConfetti() {
+    const elapsedTime = Date.now() - animationStartTime;
+    const progress = elapsedTime / animationDuration;
 
-    const end = Date.now() + 6 * 1000;
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Draw and update each confetti piece
+    confettiPieces.forEach(piece => {
+      piece.x += piece.speedX;
+      piece.y += piece.speedY;
+      piece.speedY += gravity; // Apply gravity
+      piece.opacity = 1 - progress; // Reduce opacity
 
+      ctx.fillStyle = piece.color;
+      ctx.globalAlpha = piece.opacity;
+      ctx.beginPath();
+      ctx.arc(piece.x, piece.y, piece.size / 2, 0, 2 * Math.PI);
+      ctx.fill();
+    });
 
-    if (Date.now() < end) {
-      requestAnimationFrame(shoot);
+    if (progress < 1) {
+      requestAnimationFrame(animateConfetti);
+    } else {
+      // Remove the canvas and restore scrolling
+      document.body.removeChild(canvas);
+      document.body.style.overflow = '';
     }
   }
+
+  animateConfetti();
 }
