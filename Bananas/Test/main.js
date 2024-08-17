@@ -1,7 +1,7 @@
+import { interceptConsole } from './console_interceptor.js';
 import { testSuite } from './testSuite.js'
 import { hints, solution } from './hints.js'
 import { CONSOLE_DISPLAYS, logCustom, logFail, logInput, logPass, logTestStats } from './logger.js'
-import { saveState, getState } from './store.js'
 
 
 let challenge, input, disableHints, showSolution, showInput;
@@ -71,14 +71,10 @@ async function runTests() {
   }
 
   try {
-    // saves count of runs to local json
-    let runCount = await getState('runCount')
-    await saveState('runCount', runCount + 1)
-
     testSuite(test, challenge)
     if (stats.passedTests == stats.totalTests) {
-      await saveState('challengeComplete', true)
       logPass('ALL TESTS PASSED!!!')
+      celebrate()
     }
     logTestStats(stats)
   } catch (e) {
@@ -96,17 +92,17 @@ async function runTests() {
   }
 }
 
+let hintsUsed = 0
+let runCount = 0
 async function printHints() {
-  if (!disableHints) { // increments given hints based on run count
-    let hintsUsed = await getState('hintsUsed') || 0
-    let runCount = await getState('runCount') || 0
+  if (!disableHints) {
     if (runCount % hintsOn == 0 && runCount) {
-      await saveState('hintsUsed', ++hintsUsed)
+      hintsUsed++
     }
 
     for (let h = 0; h < hintsUsed && h < hints.length; h++) {
       let hint = hints[h]
-      console.log('\x1b[40m ❔ \x1b[40m\x1b[33m',
+      console.log('❔',
         hint,
         CONSOLE_DISPLAYS.reset)
     }
@@ -115,18 +111,82 @@ async function printHints() {
 
 function printSolution() {
   if (showSolution) {
-    saveState('usedSolution', true)
-    console.log('\n\x1b[36m\x1b[40m ---- 🤖 SOLUTION ---- ')
+    console.log('---- 🤖 SOLUTION ---- ')
     console.log(solution)
     console.log(CONSOLE_DISPLAYS.reset)
   }
 }
 
 async function start() {
+  interceptConsole()
   await getImport()
   await printHints()
   printSolution()
   await runTests()
 }
-start()
 
+setTimeout(start, 1000)
+
+function celebrate() {
+  const defaults = {
+    spread: 360,
+    ticks: 100,
+    gravity: 0,
+    decay: 0.94,
+    startVelocity: 30,
+  };
+
+  function shoot() {
+    confetti({
+      ...defaults,
+      particleCount: 30,
+      scalar: 1.2,
+      shapes: ["circle", "square"],
+      colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+    });
+
+    confetti({
+      ...defaults,
+      particleCount: 20,
+      scalar: 2,
+      shapes: ["emoji"],
+      shapeOptions: {
+        emoji: {
+          value: ["🦄", "🌈"],
+        },
+      },
+    });
+  }
+
+  const end = Date.now() + 6 * 1000;
+
+  const colors = ["#bd34fe", "#41d1ff"];
+
+  (function frame() {
+    confetti({
+      particleCount: 2,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: colors,
+    });
+
+    confetti({
+      particleCount: 2,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: colors,
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+
+  setTimeout(shoot, 0);
+  setTimeout(shoot, 300);
+  setTimeout(shoot, 600);
+}
+
+window.celebrate = celebrate

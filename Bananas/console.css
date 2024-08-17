@@ -1,0 +1,130 @@
+:root {
+  /* General Controls */
+  --border-radius: 5px;
+  --border-width: 1px;
+  --border-color: #6272a4;
+  --padding: 5px;
+  --font-family: 'Courier New', monospace;
+  --font-size: 14px;
+  --line-height: 1.25;
+  --pg-padding: 0;
+  --margin-x: .25em;
+  --margin-y: 0;
+
+  /* General Colors */
+  --background-color: #282a36;
+  --text-color: #f8f8f2;
+  --accent-color: #6272a4;
+
+  /* Specific Colors for Data Types */
+  --number-color: #bd93f9;
+  --string-color: #50fa7b;
+  --object-color: #8be9fd;
+  --function-color: #ff79c6;
+  --array-fg: #ffebcd;
+  --array-bg: #213535;
+
+  /* Warning Colors */
+  --warn-bg: #5b442a;
+  --warn-fg: #ffb86c;
+
+  /* Error Colors */
+  --error-bg: #563333;
+  --error-fg: #ff4848;
+  --error-icon: #ff5555;
+
+  /* Group Colors */
+  --group-border: #e400ff;
+  --group-summary-color: #e400ff;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  padding: var(--pg-padding);
+}
+
+.console-entry {
+  padding: var(--padding);
+  color: var(--text-color);
+}
+
+.console-entry>* {
+  margin: var(--margin-y) var(--margin-x);
+}
+
+.console-log {
+  color: var(--text-color);
+}
+
+.console-number {
+  color: var(--number-color);
+}
+
+.console-string {
+  color: var(--string-color);
+}
+
+.console-object {
+  color: var(--object-color);
+}
+
+.console-function {
+  color: var(--function-color);
+}
+
+.console-array {
+  color: var(--array-fg);
+  background: var(--array-bg);
+}
+
+.console-icon {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.console-warn .console-icon {
+  color: var(--warn-icon);
+}
+
+.console-error .console-icon {
+  color: var(--error-icon);
+}
+
+.console-group summary {
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--group-summary-color);
+  user-select: none;
+}
+
+.console-group {
+  margin-left: 20px;
+  padding-left: 10px;
+  border-left: 2px solid var(--group-border);
+  background-color: var(--background-color);
+}
+
+.console-warn,
+.console-group .console-warn,
+.console-warn .console-string {
+  background-color: var(--warn-bg);
+  color: var(--warn-fg);
+}
+
+.console-error,
+.console-group .console-error,
+.console-error .console-string {
+  background-color: var(--error-bg);
+  color: var(--error-fg);
+}
+
+.console-table {
+  border-collapse: collapse;
+  width: 100%;
+}
