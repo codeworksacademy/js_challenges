@@ -155,67 +155,68 @@ async function start() {
 setTimeout(start, 1000)
 
 function celebrate() {
-  const defaults = {
-    spread: 360,
-    ticks: 100,
-    gravity: 0,
-    decay: 0.94,
-    startVelocity: 30,
-  };
 
-  function shoot() {
-    // @ts-ignore
-    confetti({
-      ...defaults,
-      particleCount: 30,
-      scalar: 1.2,
-      shapes: ["circle", "square"],
-      colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
-    });
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js';
+  document.head.appendChild(script);
 
-    // @ts-ignore
-    confetti({
-      ...defaults,
-      particleCount: 20,
-      scalar: 2,
-      shapes: ["emoji"],
-      shapeOptions: {
-        emoji: {
-          value: ["🍌", "🐒", "🦍"],
+  script.onload = function doIt() {
+    const defaults = {
+      spread: 360,
+      ticks: 100,
+      gravity: 0,
+      decay: 0.94,
+      startVelocity: 30,
+    };
+
+    const colors = window.colors || ["#bd34fe", "#41d1ff"];
+    function shoot() {
+      // @ts-ignore
+      confetti({
+        ...defaults,
+        particleCount: 30,
+        scalar: 1.2,
+        shapes: ["circle", "square"],
+        colors: colors,
+      });
+
+      // @ts-ignore
+      confetti({
+        ...defaults,
+        particleCount: 20,
+        scalar: 2,
+        shapes: ["emoji"],
+        shapeOptions: {
+          emoji: {
+            value: window.emojis || ["🍌", "🐒", "🦍"],
+          },
         },
-      },
-    });
-  }
+      });
+      // @ts-ignore
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: colors,
+      });
 
-  const end = Date.now() + 6 * 1000;
+      // @ts-ignore
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: colors,
+      });
+    }
 
-  const colors = ["#bd34fe", "#41d1ff"];
+    const end = Date.now() + 6 * 1000;
 
-  (function frame() {
-    // @ts-ignore
-    confetti({
-      particleCount: 2,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      colors: colors,
-    });
 
-    // @ts-ignore
-    confetti({
-      particleCount: 2,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      colors: colors,
-    });
 
     if (Date.now() < end) {
-      requestAnimationFrame(frame);
+      requestAnimationFrame(shoot);
     }
-  })();
-
-  setTimeout(shoot, 0);
-  setTimeout(shoot, 300);
-  setTimeout(shoot, 600);
+  }
 }
