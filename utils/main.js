@@ -1,29 +1,65 @@
-import { interceptConsole } from './console_interceptor.js';
-import { testSuite } from './testSuite.js'
-import { hints, solution } from './hints.js'
-import { CONSOLE_DISPLAYS, logCustom, logFail, logInput, logPass, logTestStats } from './logger.js'
+const CONSOLE_DISPLAYS = {
+  pass: 'background: green; color: white;',
+  fail: 'background: red; color: white;',
+  input: 'background: black; color: yellow;',
+  reset: '',
+  custom: 'background: cyan; color: black;'
+};
+
+function logPass() {
+  console.log(
+    '%c ✅',
+    CONSOLE_DISPLAYS.pass,
+    ...arguments,
+    CONSOLE_DISPLAYS.reset
+  );
+}
+
+function logFail() {
+  console.log(
+    '%c X got:',
+    CONSOLE_DISPLAYS.fail,
+    ...arguments,
+    CONSOLE_DISPLAYS.reset
+  );
+}
+
+function logInput() {
+  console.log(
+    '%c 🧪',
+    CONSOLE_DISPLAYS.input,
+    ...arguments,
+    CONSOLE_DISPLAYS.reset
+  );
+}
+
+function logCustom() {
+  console.log(
+    '%c [👾] --- CUSTOM INPUT ---',
+    CONSOLE_DISPLAYS.custom,
+    ...arguments,
+    CONSOLE_DISPLAYS.reset
+  );
+}
+
+function logTestStats(stats) {
+  console.log(
+    '\n-------------------------------\n' +
+    '%c 🧪 %c: %c' + stats.totalTests + ' ' +
+    '%c ✅ %c: %c' + stats.passedTests + ' ' +
+    '%c X %c: %c' + stats.failedTests,
+    'background: black; color: yellow;', '', 'color: yellow;',
+    'background: green; color: white;', '', 'color: green;',
+    'background: red; color: white;', '', 'color: red;'
+  );
+}
 
 
-let challenge, input, disableHints, showSolution, showInput;
 const hintsOn = 3
 let stats = {
   failedTests: 0,
   passedTests: 0,
   totalTests: 0
-}
-
-async function getImport() {
-  try {
-    let imported = await import('../challenge.js')
-    if (imported.challenge) challenge = imported.challenge
-    if (imported.input) input = imported.input
-    if (imported.showInput) showInput = imported.showInput
-    if (imported.disableHints) disableHints = imported.disableHints
-    if (imported.showSolution) showSolution = imported.showSolution
-
-  } catch (err) {
-    console.error(err)
-  }
 }
 
 function test(actual, expected, input) {
@@ -43,7 +79,8 @@ function test(actual, expected, input) {
     expected = JSON.stringify(expected)
   }
 
-  if (showInput) {
+  // @ts-ignore
+  if (window.showInput) {
     logInput(input)
   }
 
@@ -80,22 +117,13 @@ async function runTests() {
   } catch (e) {
     console.log(e)
   }
-
-  if (input) {
-    try {
-      console.log({ input })
-      let customOutput = challenge.apply(null, [input])
-      test(customOutput, null)
-    } catch (e) {
-      console.error(CONSOLE_DISPLAYS.fail, '[!] ERROR FROM CUSTOM INPUT', input, e, CONSOLE_DISPLAYS.reset)
-    }
-  }
 }
 
 let hintsUsed = 0
 let runCount = 0
 async function printHints() {
-  if (!disableHints) {
+  // @ts-ignore
+  if (!window.disableHints) {
     if (runCount % hintsOn == 0 && runCount) {
       hintsUsed++
     }
@@ -110,7 +138,8 @@ async function printHints() {
 }
 
 function printSolution() {
-  if (showSolution) {
+  // @ts-ignore
+  if (window.showSolution) {
     console.log('---- 🤖 SOLUTION ---- ')
     console.log(solution)
     console.log(CONSOLE_DISPLAYS.reset)
@@ -118,8 +147,6 @@ function printSolution() {
 }
 
 async function start() {
-  interceptConsole()
-  await getImport()
   await printHints()
   printSolution()
   await runTests()
@@ -137,6 +164,7 @@ function celebrate() {
   };
 
   function shoot() {
+    // @ts-ignore
     confetti({
       ...defaults,
       particleCount: 30,
@@ -145,6 +173,7 @@ function celebrate() {
       colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
     });
 
+    // @ts-ignore
     confetti({
       ...defaults,
       particleCount: 20,
@@ -152,7 +181,7 @@ function celebrate() {
       shapes: ["emoji"],
       shapeOptions: {
         emoji: {
-          value: ["🦄", "🌈"],
+          value: ["🍌", "🐒", "🦍"],
         },
       },
     });
@@ -163,6 +192,7 @@ function celebrate() {
   const colors = ["#bd34fe", "#41d1ff"];
 
   (function frame() {
+    // @ts-ignore
     confetti({
       particleCount: 2,
       angle: 60,
@@ -171,6 +201,7 @@ function celebrate() {
       colors: colors,
     });
 
+    // @ts-ignore
     confetti({
       particleCount: 2,
       angle: 120,
@@ -188,5 +219,3 @@ function celebrate() {
   setTimeout(shoot, 300);
   setTimeout(shoot, 600);
 }
-
-window.celebrate = celebrate

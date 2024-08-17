@@ -1,4 +1,4 @@
-export function interceptConsole() {
+function interceptConsole() {
   // Save references to the original console methods
   const originalLog = console.log;
   const originalWarn = console.warn;
@@ -107,9 +107,11 @@ export function interceptConsole() {
     currentContainer.appendChild(details);
 
     // Set the current container to this group's <details> element
+    // @ts-ignore
     currentContainer = details;
 
     // Render any additional content (after the summary)
+    // @ts-ignore
     createLogEntry(args, 'group-summary', details);
 
     originalGroup.apply(console, args);
@@ -122,22 +124,4 @@ export function interceptConsole() {
     originalGroupEnd.apply(console, args);
   };
 }
-
-// // Example usage:
-// interceptConsole();
-
-// console.log(
-//   '\n-------------------------------\n' +
-//   '%c 🧪 %c: %c8 %c ✅ %c: %c0 %c X %c: %c8',
-//   'background: black; color: yellow;', '', 'color: yellow;',
-//   'background: green; color: white;', '', 'color: green;',
-//   'background: red; color: white;', '', 'color: red;'
-// );
-
-// console.warn('This is a warning!\nWith a line break.', { test: 123 });
-// console.error('An error occurred!\nAnother line break.', new Error('Example error'));
-// console.group('Grouped logs');
-// console.log('Inside a group\nwith multiple lines');
-// console.warn('Warning inside a group\nwith a line break');
-// console.error('Error inside a group\nwith multiple lines');
-// console.groupEnd();
+interceptConsole()
