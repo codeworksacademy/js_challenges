@@ -1,6 +1,6 @@
 // -- Update the function below as needed. 
 // -- Do not change the name of the function
-export function challenge(gun1, gun2) {
+function challenge(gun1, gun2) {
 
 }
 

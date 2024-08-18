@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'You are going to need two totals',
   'be sure to multiply the force and power',
   'Remember to add each individual units computed amount to the total',
@@ -24,11 +24,11 @@ function battle(forces) {
     : 'Evil eradicates all trace of Good'
 }
 
-export const solution = battle.toString()
+const solution = battle.toString()
 
 
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   const reportedForces = [{
     race: 'Hobbits',

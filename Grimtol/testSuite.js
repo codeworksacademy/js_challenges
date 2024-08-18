@@ -1,6 +1,6 @@
 // Hints are all displayed at once however should follow a format of more helpful the further down the list you go.
 // Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-export const hints = [
+const hints = [
   'You will want to write a couple smaller functions to handle the recursion',
   'One for counting gems and one for finding the deepest floor',
   'for the gems, loop over the floor, add return them',
@@ -40,7 +40,7 @@ function explore(floor, current, deep) {
 }
 
 // export out the function to be visible in the console
-export const solution = `
+const solution = `
 ${dungeonDelve.toString()}
 ${loot.toString()}
 ${explore.toString()}
@@ -213,7 +213,7 @@ const grimtol = [
   ]
 ]
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
   //format follows: challange(<actual input sent to the students function>), expected output, given input)
   // try to come up with atleast 5
   //for more challenge try to mix up data types

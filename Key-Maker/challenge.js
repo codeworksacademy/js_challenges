@@ -17,7 +17,7 @@ const building = {
 }
 
 
-export function challenge(source) {
+function challenge(source) {
 
 
 }

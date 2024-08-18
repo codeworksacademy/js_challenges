@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'Use a variable to total up each of the numbers in the nums array',
   'Use a variable to keep track of your iterationCounts... This is not i',
   'There are more ways to loop than with the for loop',
@@ -20,9 +20,9 @@ function iterations(nums, target) {
   return iterations
 }
 
-export const solution = iterations.toString()
+const solution = iterations.toString()
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   test(challenge([1], 1), 1, [[1], 1])
   test(challenge([10, 15, 25], 100), 2, [[10, 15, 25], 100])

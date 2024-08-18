@@ -1,6 +1,6 @@
 // Hints are all displayed at once however should follow a format of more helpful the further down the list you go.
 // Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-export const hints = [
+const hints = [
   'itterate over the trail',
   'create a spot to save the rocks size',
   'when you encounter a rock, increase the rock size',
@@ -24,10 +24,10 @@ function jeepCrawler(input) {
 }
 
 // export out the function to be visible in the console
-export const solution = jeepCrawler.toString()
+const solution = jeepCrawler.toString()
 
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
   //format follows: challange(<actual input sent to the students function>), expected output, given input)
   // try to come up with atleast 5
   //for more challenge try to mix up data types

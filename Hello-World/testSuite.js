@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'Maybe enable inputs, or console log the language input to see what you are working with',
   'You will likely need a few if statements with if else',
   'Even though there are 8 languages, only 5 are used',
@@ -22,7 +22,7 @@ function helloWorld(language) {
   if ('hindi') return hindi
 }
 
-export const solution = helloWorld.toString()
+const solution = helloWorld.toString()
 
 
 let english = 'Hello World!'
@@ -34,7 +34,7 @@ let chinese = 'Nǐ hǎo shìjiè!'
 let japanese = "`Kon'nichiwa sekai'"
 let hindi = 'hailo varld!'
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   test(challenge('spanish'), spanish, ['spanish', spanish])
   test(challenge('afrikaans'), afrikaans, ['afrikaans', afrikaans])

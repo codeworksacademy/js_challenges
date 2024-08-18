@@ -1,6 +1,6 @@
 // Hints are all displayed at once however should follow a format of more helpful the further down the list you go.
 // Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-export const hints = [
+const hints = [
   'Most important step, itterate through the building',
   "focus on returning the correct keys for just the primitive values first",
   'While itterating keep track of both the current key you are on and the value',
@@ -34,14 +34,14 @@ function keyMaker(source) {
 }
 
 // export out the function to be visible in the console
-export const solution = keyMaker.toString()
+const solution = keyMaker.toString()
 
 // here is where you can write the multiple test cases for the challenge
 const theNeb = ['Morpheus', 'Trinity', 'Link', 'Tank', 'Dozer', 'Apoc', 'Cypher', 'Mouse', 'Switch']
 const zion = { population: 250000, founders: 23, reboots: 6 }
 const neo = [['Matrix'], ['Reloaded'], ['Revolutions']]
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
   //format follows: challange(<actual input sent to the students function>), expected output, given input)
   // try to come up with atleast 5
   //for more challenge try to mix up data types

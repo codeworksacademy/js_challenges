@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'Start small solve the first example',
   'Look for a pattern',
   'Create 3 variables to keep track off the height used bricks and bricks needed for the next layer',
@@ -24,9 +24,9 @@ function pyramid(totalBricks) {
   return height
 }
 
-export const solution = pyramid.toString()
+const solution = pyramid.toString()
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   test(challenge(7), 3, 7)
   test(challenge(50), 9, 50)

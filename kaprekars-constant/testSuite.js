@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'Try converting the number to a string',
   'Create two copies of the string numbers',
   'sort the copies one high the other low',
@@ -24,9 +24,9 @@ function Kaprekar(num) {
   return iterations
 }
 
-export const solution = Kaprekar.toString()
+const solution = Kaprekar.toString()
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   test(challenge(4520), 7, 4520)
   test(challenge(6754), 3, 6754)

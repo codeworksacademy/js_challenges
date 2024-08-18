@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'Be sure your function takes in a parameter',
   'Have you ever used the modulus operator?',
   'Be sure you are returning a string'
@@ -12,12 +12,12 @@ function evenOrOdd(num) {
   return 'odd'
 }
 
-export const solution = evenOrOdd.toString()
+const solution = evenOrOdd.toString()
 
 
 
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   test(challenge(2), 'even', 'the number 2 should return the string even')
 

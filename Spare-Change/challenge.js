@@ -2,7 +2,7 @@
 // -- Do not change the name of the function
 // -- ctrl + enter to run 
 
-export function challenge(coins, price) {
+function challenge(coins, price) {
 
 }
 

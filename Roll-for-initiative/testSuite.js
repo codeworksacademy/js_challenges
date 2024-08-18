@@ -1,6 +1,6 @@
 // Hints are all displayed based on a runcount follow a format of more helpful the further down the list you go.
 // Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-export const hints = [
+const hints = [
   'You could use .map to give each creature an initiative property',
   'Check if there is a bonus before you try and access it or you will get errors',
   "If you have a multiple line .map, don't forget your return inside",
@@ -22,7 +22,7 @@ function rollForInitiative(creatures) {
 }
 
 // export out the function to be visible in the console
-export const solution = rollForInitiative.toString()
+const solution = rollForInitiative.toString()
 
 // here is where you can write the multiple test cases for the challenge
 let combat1 = [
@@ -114,7 +114,7 @@ let combat3 = [
 
 
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
   //format follows: challange(<actual input sent to the students function>), expected output, given input)
   // try to come up with atleast 5
   //for more challenge try to mix up data types

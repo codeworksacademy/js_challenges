@@ -10,7 +10,7 @@ let hindi = 'hailo varld!'
 
 // -- Update the function below as needed. 
 // -- Do not change the name of the function
-export function challenge(language) {
+function challenge(language) {
 
 }
 

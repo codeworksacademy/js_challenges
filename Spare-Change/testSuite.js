@@ -1,6 +1,6 @@
 // Hints are all displayed based on a runcount follow a format of more helpful the further down the list you go.
 // Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-export const hints = [
+const hints = [
   'Since the array is always the same length and pretty short, you dont need to loop',
   'create variables for all the coins, calculating each of the total values',
   'if the total value of the coins is enough for the price return true otherwise return false'
@@ -15,14 +15,14 @@ function spareChange(coins, price) {
 }
 
 // export out the function to be visible in the console
-export const solution = spareChange.toString()
+const solution = spareChange.toString()
 
 // here is where you can write the multiple test cases for the challenge
 let coins1 = [2, 5, 2]
 let coins2 = [10, 0, 1]
 let coins3 = [1, 10, 3]
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
   //format follows: challange(<actual input sent to the students function>), expected output, given input)
   // try to come up with atleast 5
   //for more challenge try to mix up data types

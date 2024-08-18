@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'Remember to take in two parameters',
   'remember PEMDAS',
   'The ^ is NOT the square operator in JavaScript.',
@@ -9,9 +9,9 @@ function pythagorean(a, b) {
   return a * a + b * b
 }
 
-export const solution = pythagorean.toString()
+const solution = pythagorean.toString()
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   test(challenge(3, 4), 25, [3, 4])
 

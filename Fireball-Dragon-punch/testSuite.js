@@ -1,6 +1,6 @@
 // Hints are all displayed based on a runcount follow a format of more helpful the further down the list you go.
 // Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-export const hints = [
+const hints = [
   'iterate over the string singling out each input',
   "there are only 2 types of inputs we care about, _ and the actions",
   "when you encounter a _ tally them up, and actions add them together",
@@ -41,7 +41,7 @@ function specialString(inputs) {
 }
 
 // export out the function to be visible in the console
-export const solution = specialString.toString()
+const solution = specialString.toString()
 
 // here is where you can write the multiple test cases for the challenge
 let string1 = '➡️__➡️⬇️_↘️➡️A_A__AB⬇️__⬆️B'
@@ -49,7 +49,7 @@ let string2 = '⬆️⬆️⬇️⬇️⬅️➡️⬅➡AB_'
 let string3 = '➡️_➡️_⬅️⬇️__⬅️⬇️_⬆️_B___⬇️___↙️⬅️_B_A_AA_⬇️↙️➡️__⬇️↘️_A'
 let string4 = '➡️_➡️↗️__B_⬇️AA_➡️__⬇️↘️A_⬅️___➡️A__➡️_➡️___B_⬇️A➡️__↘️⬇️_↙️⬅️↖️_⬆️↗️➡️AB_'
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
   //format follows: challange(<actual input sent to the students function>), expected output, given input)
   // try to come up with atleast 5
   //for more challenge try to mix up data types

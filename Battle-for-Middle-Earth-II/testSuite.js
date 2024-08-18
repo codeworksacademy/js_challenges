@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'Keep it simple... Do Math',
   'Remember to use the other type of loop',
   'Reduce the total arrows by multipling the hp and count',
@@ -22,11 +22,11 @@ function legolasOrcLiquidator(arrows, creatures) {
   return 'A RED SUN RISES. BLOOD HAS BEEN SPILLED THIS NIGHT'
 }
 
-export const solution = legolasOrcLiquidator.toString()
+const solution = legolasOrcLiquidator.toString()
 
 
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   const balrog = [
     { name: 'Orcs', count: 25, hp: 2 },

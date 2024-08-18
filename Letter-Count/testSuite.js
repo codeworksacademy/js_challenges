@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'Create a variable that can store the starting count before creating your loop',
   "Don't try to use i for the letter counter. Leave it to deal with the loop",
   'be sure to increment your letter counter each time you encounter the letter in the string use comparison in the loop == with an if statement',
@@ -16,11 +16,11 @@ function letterCount(str, letter) {
   return count
 }
 
-export const solution = letterCount.toString()
+const solution = letterCount.toString()
 
 
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   const aardvark = 'aardvark'
   const eel = 'eel'

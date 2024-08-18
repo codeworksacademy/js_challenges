@@ -1,6 +1,6 @@
 // Hints are all displayed at once however should follow a format of more helpful the further down the list you go.
 // Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-export const hints = [
+const hints = [
   'You will likely want to double itterate',
   'You can combine two numbers then use find on the array to get a combo',
   'create an array outside you loops to store your combos',
@@ -24,13 +24,13 @@ function combos(nums) {
 }
 
 // export out the function to be visible in the console
-export const solution = combos.toString()
+const solution = combos.toString()
 
 // here is where you can write the multiple test cases for the challenge
 const two = [5, 8, 22, 25, 30, 33]
 const three = [1, 2, 3, 4, 5, 6, 7, 8]
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
   //format follows: challange(<actual input sent to the students function>), expected output, given input)
   // try to come up with atleast 5
   //for more challenge try to mix up data types

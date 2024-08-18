@@ -1,4 +1,4 @@
-export const hints = [
+const hints = [
   'Before you start iterating you will want to create some storage variables',
   'It might be easier to keep your high letter count and high letter variables seperate',
   'Create a dictionary for all of your letters, something like this structure works well {a:1, c:3}',
@@ -24,11 +24,11 @@ function mostCommonLetter(str) {
   return highestLetter
 }
 
-export const solution = mostCommonLetter.toString()
+const solution = mostCommonLetter.toString()
 
 
 
-export function testSuite(test, challenge) {
+function testSuite(test, challenge) {
 
   let zoom = 'zoom'
   let twoRoads = 'Two roads diverged in a wood, and I took the one less traveled by'
