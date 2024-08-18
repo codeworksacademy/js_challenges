@@ -8,7 +8,7 @@ const hints = [
 ]
 
 // Write a solution to the challenge here in plain JS
-function challenge(gun1, gun2) {
+function bang(gun1, gun2) {
   const speed1 = gun1.indexOf('G')
   const speed2 = gun2.indexOf('G')
   if (speed1 < speed2) return 1
@@ -16,7 +16,7 @@ function challenge(gun1, gun2) {
 }
 
 // export out the function to be visible in the console
-const solution = challenge.toString()
+const solution = bang.toString()
 
 
 

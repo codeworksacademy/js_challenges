@@ -5,6 +5,7 @@ const hints = [
   'If you are still struggling, you can get a solution to the console by un-commenting the showSolution line. Give it a show.'
 ]
 
+
 function helloWorld(language) {
   // Because return actually ends the function on that line, we don't need to use if else statements. if something is returned, the rest of the lines won't run
   if ("spanish") {
