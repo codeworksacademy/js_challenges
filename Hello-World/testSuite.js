@@ -26,22 +26,22 @@ function helloWorld(language) {
 const solution = helloWorld.toString()
 
 
-let english = 'Hello World!'
-let spanish = '¡Hola Mundo!'
-let afrikaans = 'Hello Wêreld!'
-let italian = 'Ciao mondo!'
-let german = 'Hallo Welt!'
-let chinese = 'Nǐ hǎo shìjiè!'
-let japanese = "`Kon'nichiwa sekai'"
-let hindi = 'hailo varld!'
+// let english = 'Hello World!'
+// let spanish = '¡Hola Mundo!'
+// let afrikaans = 'Hello Wêreld!'
+// let italian = 'Ciao mondo!'
+// let german = 'Hallo Welt!'
+// let chinese = 'Nǐ hǎo shìjiè!'
+// let japanese = "`Kon'nichiwa sekai'"
+// let hindi = 'hailo varld!'
 
 function testSuite(test, challenge) {
 
-  test(challenge('spanish'), spanish, ['spanish', spanish])
-  test(challenge('afrikaans'), afrikaans, ['afrikaans', afrikaans])
-  test(challenge('german'), german, ['german', german])
-  test(challenge('japanese'), japanese, ['japanese', japanese])
-  test(challenge('hindi'), hindi, ['hindi', hindi])
+  test(challenge('spanish'), '¡Hola Mundo!', ['spanish', '¡Hola Mundo!'])
+  test(challenge('afrikaans'), 'Hello Wêreld!', ['afrikaans', 'Hello Wêreld!'])
+  test(challenge('german'), 'Hallo Welt!', ['german', 'Hallo Welt!'])
+  test(challenge('japanese'), "`Kon'nichiwa sekai'", ['japanese', "`Kon'nichiwa sekai'"])
+  test(challenge('hindi'), 'hailo varld!', ['hindi', 'hailo varld!'])
 
 
 }
