@@ -33,12 +33,13 @@ function testSuite(test, challenge) {
 
   test(rectangle.height, 10, `new Rectangle(10,7).width  10`)
   test(rectangle.width, 7, `new Rectangle(10,7).height  7`)
-  test(rectangle.area, 70, `new Rectangle(10,7).area  70`)
-  test(rectangle?.checkSquare(), false, `new Rectangle(10,7).checkSquare()  false`)
 
   test(square.height, 5, `new Rectangle(5,5).width  5`)
   test(square.width, 5, `new Rectangle(5,5).height  5`)
-  test(square.area, 25, `new Rectangle(5,5).area  25`)
-  test(square?.checkSquare(), true, `new Rectangle(5,5).checkSquare()  true`)
 
+  test(rectangle.area, 70, `new Rectangle(10,7).area  70`)
+  test(square.area, 25, `new Rectangle(5,5).area  25`)
+
+  test(rectangle.checkSquare(), false, `new Rectangle(10,7).checkSquare()  false`)
+  test(square.checkSquare(), true, `new Rectangle(5,5).checkSquare()  true`)
 }
