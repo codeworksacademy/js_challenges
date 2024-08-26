@@ -1,4 +1,4 @@
-// Hints are all displayed based on a runcount follow a format of more helpful the further down the list you go.
+// Hints are all displayed based on a run count follow a format of more helpful the further down the list you go.
 // Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
 const hints = [
 
@@ -14,15 +14,15 @@ class HeroSolution {
   }
 
   get healthPercent() {
-    return Math.round((this.health / this.maxHealth) * 100);
+    return Math.round((this.health / this.maxHealth) * 100)
   }
 
   get level() {
-    if (this.exp >= 500) return 5;
-    if (this.exp >= 300) return 4;
-    if (this.exp >= 150) return 3;
-    if (this.exp >= 50) return 2;
-    return 1;
+    if (this.exp >= 500) return 5
+    if (this.exp >= 300) return 4
+    if (this.exp >= 150) return 3
+    if (this.exp >= 50) return 2
+    return 1
   }
 }
 
@@ -41,11 +41,12 @@ function testSuite(test, challenge) {
   const swift = new challenge('Swift Ironstag', 15)
 
 
-  test(slate.health, 25, `'Slate Slabrock', 25 | 25`)
-  test(slate.name, 'Slate Slabrock', `'Slate Slabrock', 25 | 'Slate Slabrock'`)
+  test(slate.name, 'Slate Slabrock', `slate.name | 'Slate Slabrock'`)
+  test(slate.health, 25, `slate.health, 25 | 25`)
+  test(slate.maxHealth, 25, `slate.maxHealth | 25`)
 
-  test(swift.health, 15, `'Swift Ironstag', 15 | 15`)
-  test(swift.name, 'Swift Ironstag', `'Swift Ironstag', 15 | 'Swift Ironstag'`)
+  test(swift.name, 'Swift Ironstag', `swift.name | 'Swift Ironstag'`)
+  test(swift.exp, 0, `swift.exp | 0`)
 
   test(slate.healthPercent, 100, `slate.healthPercent | '100'`)
   slate.health -= 10
