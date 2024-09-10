@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>🚦</title>
+    <style>
+    /* STYLES HERE */
+    body{
+      display: grid;
+      place-content: center;
+      background-color: #222;
+      background-image: repeating-linear-gradient(-135deg, #1e1e1e 0, #232323 24px)
+    }
+    .pole,.box{
+      width: 50px;
+      display: flex;
+      justify-content:center;
+      flex-direction: column;
+      background: #3c3c3c;
+      padding: .25em;
+    }
+    .pole{
+      width: 25px;
+      aspect-ratio: 1/1.5;
+      margin-left: calc(25px /2);
+    }
+    .light{
+      background-blend-mode: hard-light;
+      background-image: repeating-linear-gradient(-130deg, #95959547 0, #49494970 1px);
+      border-radius: 50%;
+      height: 50px;
+      margin: .125em 0em;
+      aspect-ratio: 1/1;
+      background-color: var(--color, white);
+      border: 1px solid transparent;
+    }
+    .light:hover{
+      filter: drop-shadow(0 0 16px var(--color));
+      border-color: #ffffff88;
+    }
+    .light:nth-child(1){
+      --color: #e67275
+    }
+    .light:nth-child(2){
+      --color: #e8e676;
+    }
+    .light:nth-child(3){
+      --color: #7ff180;
+    }
+    </style>
+</head>
+
+<body>
+  <!-- HTML HERE -->
+  <div class="pole"></div>
+  <div class="box">
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+  </div>
+
+</body>
+
+</html>
