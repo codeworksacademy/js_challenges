@@ -8,19 +8,19 @@ const hints = [
 
 function helloWorld(language) {
   // Because return actually ends the function on that line, we don't need to use if else statements. if something is returned, the rest of the lines won't run
-  if ("spanish") {
+  if (language == "spanish") {
     return spanish
   }
-  if ("afrikaans") {
+  if (language == "afrikaans") {
     return afrikaans
   }
-  if ("german") {
+  if (language == "german") {
     return german
   }
   // When your statement immediately returns, you don't need to open it with extra { }, so you can save space
-  if ('japanese') return japanese
+  if (language == 'japanese') return japanese
 
-  if ('hindi') return hindi
+  if (language == 'hindi') return hindi
 }
 
 const solution = helloWorld.toString()
