@@ -1,0 +1,67 @@
+{
+  "index for challenges": {
+    "prefix": "challenge:index",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"en\">",
+      "",
+      "<head>",
+      "  <meta charset=\"UTF-8\">",
+      "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      "  <title>cw-challenge</title>",
+      "  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/codeworksacademy/js_challenges/utils/console.css\">",
+      "</head>",
+      "",
+      "<body>",
+      "",
+      "",
+      "  <main>",
+      "    <!-- Test tables go here -->",
+      "  </main>",
+      "",
+      "",
+      "",
+      "  <script src=\"testSuite.js\"></script>",
+      "  <script src=\"challenge.js\"></script>",
+      "",
+      "  <script src=\"https://cdn.jsdelivr.net/gh/codeworksacademy/js_challenges/utils/celebrate.min.js\"></script>",
+      "  <script src=\"https://cdn.jsdelivr.net/gh/codeworksacademy/js_challenges/utils/console_interceptor_v2.min.js\"></script>",
+      "  <script src=\"https://cdn.jsdelivr.net/gh/codeworksacademy/js_challenges/utils/main_v2.js\"></script>",
+      "",
+      "</body>",
+      "",
+      "</html>"
+    ],
+    "description": "index for challenges"
+  },
+  "test suite": {
+    "prefix": "challenge:testSuite",
+    "body": [
+      "/**",
+      " * @callback testCallback",
+      " * @param {function} function - challenge function to run.",
+      " * @param {*} expected - expected output.",
+      " * @param {*} arguments - arguments passed to function.",
+      " */",
+      "",
+      "/**",
+      " * @param {testCallback} test ",
+      " */",
+      "async function* testSuite(test) {",
+      "",
+      "  yield await test(helloWorld, 'Hello World!', 'english')",
+      "",
+      "",
+      "  yield 'TEST:END'",
+      "}"
+    ],
+    "description": "test suite"
+  },
+  "new Test": {
+    "prefix": "challenge:newTest",
+    "body": [
+      "  yield await test(${1}, ${2}, ${3})"
+    ],
+    "description": "new Test"
+  }
+}

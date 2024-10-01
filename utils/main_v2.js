@@ -51,6 +51,9 @@ function formatData(data) {
   if (tables[data]) {
     return `<b class="data-function">${data}</b>`
   }
+  if (data instanceof Error) {
+    return `<span class="data-error">${data}</span>`
+  }
   if (data == '✅' || data == '❌') {
     return data
   }
