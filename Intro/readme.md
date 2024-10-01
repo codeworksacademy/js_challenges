@@ -6,7 +6,7 @@ As you progress through these challenges you will build up a working knowledge o
 
 Let's take a look at our environment really quick before we get started. In this current frame you have these `instructions`, and the `webview`. These can be toggled using the buttons at the top. While in the `webview` you can access the `developer console` with the 🔧 button. And run your code using the `run` button. Speaking of code, in the other frame you will see a almost blank canvas for you to write the code meant to complete each challenge. You will also see some options zoom the webview in and out, and *frame* elements if your challenge includes and `html`. There is also a `Reset` button in the very bottom left of the window, if you want to erase your code and start over.
 
-Each challenge is unique and can come with many different *inputs*, *params*, *variables* or even multiple *functions*. These will be key to completing these challenges and should not be modified. You will however add to code that is there.
+Each challenge is unique and can come with many different *inputs*, *parameters*, *variables* or even multiple *functions*. These will be key to completing these challenges and should not be modified. You will however add to code that is there.
 
 ```js
 // --- Starting challenge.js
@@ -43,7 +43,7 @@ If you modify the name of any starting variables or functions, you might still r
 
 ## Instructions
 
-On to our challenge. Like many first steps, this one is special. It has `3` different functions for you to solve. Each of them logically are pretty straight forward, they are more for you to get used to working with **functions** witch a **return** that gives us back the result.
+On to our challenge. Like many first steps, this one is special. It has `3` different functions for you to solve. Each of them logically are pretty straight forward, they are more for you to get used to working with **functions** with a **return** that gives us back the result.
 
 ```js
 function sum(num1, num2){
@@ -52,19 +52,19 @@ function sum(num1, num2){
 let total = sum(10, 5) // *call* total = 15
 ```
 
-console logs are cool for us developers, being able to **return** a value to a function caller like `total` is much cooler.
+console logs are cool for us developers, but being able to **return** a value to a function caller like `total` is much cooler.
 
 
 ### 1. Add 10
 
-Given a number as your **input** add `10` to that number and **return** the sum.
+For the first challenge, you are given a number variable. Add `10` to that number and **return** the sum.
 ```js
 number = 10 // solution expected = 20
 ```
 
 ### 2. Double it
 
-Given a number as your **input**, doubles it's value, and **return** the doubled value.
+Given a number as a *parameter* called **input**, doubles it's value, and **return** the value.
 ```js
 input = 10 // solution expected = 20
 input = -5 // solution expected = -10
@@ -72,7 +72,7 @@ input = -5 // solution expected = -10
 
 ### 3. This "and" That
 
-Given `2` string variables, add them together with the string `and` separating them.
+Given two strings, one as a *variable*, the other as a *parameter*, add them together with the string `and` separating them.
 ```js
 string1 = 'this' 
 string2 = 'that' // solution expected = 'this and that'
@@ -89,12 +89,13 @@ string2 = 'the other' // solution expected = 'this and the other'
 
 [MDN return](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return)
 
-
-## Solution
+## Skills
 
 What is there to learn here? Maybe a little about utilizing **variables** and **parameters**, but also that even the simplest of problems can seem tricky when you're just getting started. 
 
 The **return** word is also a key to all of these solutions. While we are just getting started understanding the importance of functions that **return** values opens up our 
+
+## Solutions
 
 ### 1. Add 10
 
