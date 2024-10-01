@@ -55,7 +55,7 @@ function formatData(data) {
     return data
   }
   if (data instanceof Error) {
-    return `<span class="data-error">${data}</span>`
+    return `<span class="data-error">${data.name}: ${data.message}</span>`
   }
   if (data === null) {
     return `<span class="data-null">${data}</span>`
