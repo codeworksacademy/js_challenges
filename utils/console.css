@@ -13,12 +13,14 @@
 
   /* General Colors */
   --background-color: #282a36;
+  --table-bg: #191b22;
   --text-color: #f8f8f2;
   --accent-color: #6272a4;
+  --table-header: #253461;
 
   /* Specific Colors for Data Types */
   --number-color: #bd93f9;
-  --string-color: #50fa7b;
+  --string-color: #81fb9f;
   --object-color: #8be9fd;
   --function-color: #ff79c6;
   --array-fg: #ffebcd;
@@ -32,6 +34,9 @@
   --error-bg: #563333;
   --error-fg: #ff4848;
   --error-icon: #ff5555;
+
+  --passed-bg: #00ff0011;
+  --passed-text: rgb(141, 255, 141);
 
   /* Group Colors */
   --group-border: #e400ff;
@@ -66,25 +71,34 @@ body {
   color: var(--text-color);
 }
 
-.console-number {
+.console-number,
+.data-number {
   color: var(--number-color);
 }
 
-.console-string {
+.console-string,
+.data-string {
   color: var(--string-color);
 }
 
-.console-object {
+.console-object,
+.data-object {
   color: var(--object-color);
 }
 
-.console-function {
+.console-function,
+.data-function {
   color: var(--function-color);
 }
 
-.console-array {
+.console-array,
+.data-array {
   color: var(--array-fg);
   background: var(--array-bg);
+}
+
+.data-undefined {
+  color: var(--warn-fg);
 }
 
 .console-icon {
@@ -131,4 +145,97 @@ body {
 .console-table {
   border-collapse: collapse;
   width: 100%;
+}
+
+table {
+  margin-inline: auto;
+  width: 95dvw;
+  border-radius: 10px;
+  background-color: var(--table-bg);
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+table.fixed-table td {
+  width: unset;
+}
+
+thead {
+  background-color: var(--table-header);
+}
+
+th {
+  padding: .5em 1em;
+}
+
+td {
+  padding: .5em;
+  border-bottom: 1px dotted var(--border-color);
+  border-right: 1px dotted var(--border-color);
+}
+
+td:first-child {
+  width: 0%;
+  padding: .75em 1.5em;
+}
+
+td:last-child {
+  border-right: 0;
+  width: 4ch;
+  text-align: center;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+tr {
+  border-bottom: 1px dotted var(--border-color);
+}
+
+tr.passed {
+  background-color: var(--passed-bg);
+  animation: passed .4s ease forwards;
+}
+
+tr.failed {
+  background-color: transparent;
+  animation: failed .4s ease forwards;
+}
+
+table {
+  opacity: 0;
+  animation: float-in .3s ease forwards;
+}
+
+@keyframes float-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes passed {
+  0% {
+    background-color: #81fb9f;
+  }
+
+  100% {
+    background-color: var(--passed-bg);
+  }
+}
+
+@keyframes failed {
+  0% {
+    background-color: var(--error-fg);
+  }
+
+  100% {
+    background-color: transparent;
+  }
 }
