@@ -51,14 +51,17 @@ function formatData(data) {
   if (tables[data]) {
     return `<b class="data-function">${data}</b>`
   }
-  if (data instanceof Error) {
-    return `<span class="data-error">${data}</span>`
-  }
   if (data == '✅' || data == '❌') {
     return data
   }
+  if (data instanceof Error) {
+    return `<span class="data-error">${data}</span>`
+  }
   if (data === null) {
     return `<span class="data-null">${data}</span>`
+  }
+  if (data === undefined) {
+    return `<span class="data-undefined">${data}</span>`
   }
   if (data == Array.isArray(data)) {
     return `<span class="data-array">${JSON.stringify(data)}</span>`
