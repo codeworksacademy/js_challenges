@@ -10,6 +10,14 @@ Thankfully code is not so complex, at least when it comes to *`data` types*. In 
 
  > 🧩 hint: you will want to start with the built-in `typeof` 
 
+ ### References
+
+ [MDN typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+
+ [MDN isArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)
+
+ [MDN instanceof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof)
+
 ```js
 data = 7 // -> 'number'
 data = 'sandwich' // -> 'string'
@@ -27,7 +35,9 @@ While this isn't the most common of issues. Parsing data types out of a set of d
 
 ## Solutions
 
-Our first solution actually doesn't complete this challenge, but it does complete a few of the test cases.
+Our first solution actually doesn't complete this challenge, but it does complete most of the test cases.
+
+At first that doesn't seem to bad, it's not very much code and it solves most issues, but then if we look at the output of our console and we see why it failed them, it become clear something is up.
 
 ```js
 function bananas(data){
@@ -35,3 +45,26 @@ function bananas(data){
   return type
 }
 ```
+
+When `{banana: "sandwich"}`, `null`, `[1,2,3]`, and `Error()` are passed in, they **all** return `'object'`. Or in other words the `typeof` each of those is `'object'`. *What!? Even `[1,2,3]` is type `'object'`?* . 
+
+**Yes**, *technically* this is true, all of these types are *derived* from the `object` type. So to cover all those other cases we need a few special checks.
+
+```js
+function bananas(data){
+  if(data === null){
+    return 'null'
+  }
+  if(Array.isArray(data)){
+    return 'array'
+  }
+  if(data instanceof Error){
+    return 'error'
+  }
+  const type = typeof data
+  return type
+}
+```
+
+We can check for null explicitly Use the static `Array` method `isArray` and the built-in `instanceof` to see if our `'object'` was created using the `Error` *contructor*.
+
