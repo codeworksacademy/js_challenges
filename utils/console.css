@@ -21,6 +21,7 @@
   /* Specific Colors for Data Types */
   --number-color: #bd93f9;
   --string-color: #81fb9f;
+  --boolean-color: #8181fb;
   --object-color: #8be9fd;
   --function-color: #ff79c6;
   --array-fg: #ffebcd;
@@ -79,6 +80,11 @@ body {
 .console-string,
 .data-string {
   color: var(--string-color);
+}
+
+.console-boolean,
+.data-boolean {
+  color: var(--boolean-color);
 }
 
 .console-object,

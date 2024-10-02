@@ -63,14 +63,20 @@ function formatData(data) {
   if (data === undefined) {
     return `<span class="data-undefined">${data}</span>`
   }
-  if (data === Array.isArray(data)) {
-    return `<span class="data-array">${JSON.stringify(data)}</span>`
+  if (Array.isArray(data)) {
+    return `<span class="data-array">[${data.map(formatData)}]</span>`
   }
   if (typeof data === 'object') {
-    return JSON.stringify(data)
+    return `<span class="data-object">${JSON.stringify(data)}</span>`
   }
   if (typeof data === 'string') {
-    return `'${data}'`
+    return `<span class="data-string">'${data}'</span>`
+  }
+  if (typeof data === 'number') {
+    return `<span class="data-number">${data}</span>`
+  }
+  if (typeof data === 'boolean') {
+    return `<span class="data-boolean">${data}</span>`
   }
   return data
 }
