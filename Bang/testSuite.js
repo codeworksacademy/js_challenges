@@ -1,36 +1,28 @@
-// Hints are all displayed based on a runcount follow a format of more helpful the further down the list you go.
-// Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-const hints = [
-  'Create 2 variables for the speed of each gun slinger',
-  'Set those variables to numbers equally the index of when they fired',
-  'return the number that has the lower index',
-  'We really only care about the last letter in BANG'
-]
-
-// Write a solution to the challenge here in plain JS
-function bang(gun1, gun2) {
-  const speed1 = gun1.indexOf('G')
-  const speed2 = gun2.indexOf('G')
-  if (speed1 < speed2) return 1
-  return 2
-}
-
-// export out the function to be visible in the console
-const solution = bang.toString()
-
-
+/**
+ * @callback testCallback
+ * @param {function} function - challenge function to run.
+ * @param {*} expected - expected output.
+ * @param {...*} arguments - arguments passed to function.
+ */
 
 // here is where you can write the multiple test cases for the challenge
 let showdown1 = ['___BANG___', '______BANG']
 let showdown2 = ['__BANG', 'BANG__']
-let showdown3 = ['B___AN____G_', '___B_A_NG___']
+let showdown3 = ['____B_A', '_______']
+let showdown4 = ['B___AN____G_', '___B_A_NG___']
+let showdown5 = ['____BA_N__G_', '__B__A_N__G_']
 
-function testSuite(test, challenge) {
-  //format follows: challange(<actual input sent to the students function>), expected output, given input)
-  // try to come up with atleast 5
-  //for more challenge try to mix up data types
-  test(challenge(...showdown1), 1, showdown1.join(' '))
-  test(challenge(...showdown2), 2, showdown2.join(' '))
-  test(challenge(...showdown3), 2, showdown3.join(' '))
 
+/**
+ * @param {testCallback} test 
+ */
+async function* testSuite(test) {
+
+  yield await test(bang, 1, ...showdown1)
+  yield await test(bang, 2, ...showdown2)
+  yield await test(bang, 0, ...showdown3)
+  yield await test(bang, 2, ...showdown4)
+  yield await test(bang, 0, ...showdown5)
+
+  yield 'TEST:END'
 }
