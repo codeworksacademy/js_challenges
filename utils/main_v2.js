@@ -51,7 +51,7 @@ function formatData(data) {
   if (tables[data]) {
     return `<b class="data-function">${data}</b>`
   }
-  if (data == '✅' || data == '❌') {
+  if (data === '✅' || data === '❌') {
     return data
   }
   if (data instanceof Error) {
@@ -63,13 +63,13 @@ function formatData(data) {
   if (data === undefined) {
     return `<span class="data-undefined">${data}</span>`
   }
-  if (data == Array.isArray(data)) {
+  if (data === Array.isArray(data)) {
     return `<span class="data-array">${JSON.stringify(data)}</span>`
   }
-  if (typeof data == 'object') {
+  if (typeof data === 'object') {
     return JSON.stringify(data)
   }
-  if (typeof data == 'string') {
+  if (typeof data === 'string') {
     return `'${data}'`
   }
   return data

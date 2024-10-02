@@ -1,36 +1,20 @@
-const hints = [
-  'Be sure your function takes in a parameter',
-  'Have you ever used the modulus operator?',
-  'Be sure you are returning a string'
-]
+/**
+ * @callback testCallback
+ * @param {function} function - challenge function to run.
+ * @param {*} expected - expected output.
+ * @param {...*} arguments - arguments passed to function.
+ */
 
+/**
+ * @param {testCallback} test 
+ */
+async function* testSuite(test) {
 
-function evenOrOdd(num) {
-  if (num % 2 == 0) {
-    return 'even'
-  }
-  return 'odd'
-}
+  yield await test(evenOrOdd, 'even', 2)
+  yield await test(evenOrOdd, 'odd', 3)
+  yield await test(evenOrOdd, 'even', 24)
+  yield await test(evenOrOdd, 'odd', -151)
+  yield await test(evenOrOdd, 'even', 0)
 
-const solution = evenOrOdd.toString()
-
-
-
-
-function testSuite(test, challenge) {
-
-  test(challenge(2), 'even', 'the number 2 should return the string even')
-
-  test(challenge(1), 'odd', 'the number 1 should return the string odd')
-
-  test(challenge(10000), 'even', 'even large numbers are handled appropriately')
-
-  test(challenge(10001), 'odd', 'even large numbers are handled appropriately')
-
-  test(challenge(10002), 'even', 'even large numbers are handled appropriately')
-
-  test(challenge(104326), 'even', 'even large numbers are handled appropriately')
-
-  test(challenge(104329), 'odd', 'even large numbers are handled appropriately')
-
+  yield 'TEST:END'
 }
