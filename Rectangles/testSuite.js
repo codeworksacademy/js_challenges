@@ -1,45 +1,32 @@
-// Hints are all displayed based on a runcount follow a format of more helpful the further down the list you go.
-// Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-const hints = [
-
-]
-
-// Write a solution to the challenge here in plain JS
-class RectangleSolution {
-  constructor(height, width) {
-    this.height = height
-    this.width = width
-    this.area = height * width
-  }
-
-  checkSquare() {
-    return this.height == this.width
-  }
-}
 
 
-// export out the function to be visible in the console
-const solution = RectangleSolution.toString()
 
-// here is where you can write the multiple test cases for the challenge
-
-function testSuite(test, challenge) {
-  //format follows: challange(<actual input sent to the students function>), expected output, given input)
-  // try to come up with atleast 5
+async function* testSuite(test) {
   //for more challenge try to mix up data types
-  const rectangle = new challenge(10, 7)
-  const square = new challenge(5, 5)
+  const rectangle = new Rectangle(10, 7)
+  const square = new Rectangle(5, 5)
 
 
-  test(rectangle.height, 10, `new Rectangle(10,7).width  10`)
-  test(rectangle.width, 7, `new Rectangle(10,7).height  7`)
+  yield await test(function Rectangle(height, width, member) { return rectangle.width }, 7, 10, 7, 'width')
+  yield await test(function Rectangle(height, width, member) { return rectangle.height }, 10, 10, 7, 'height')
 
-  test(square.height, 5, `new Rectangle(5,5).width  5`)
-  test(square.width, 5, `new Rectangle(5,5).height  5`)
+  yield await test(function Rectangle(height, width, member) { return square.width }, 5, 5, 5, 'width')
+  yield await test(function Rectangle(height, width, member) { return square.height }, 5, 5, 5, 'height')
 
-  test(rectangle.area, 70, `new Rectangle(10,7).area  70`)
-  test(square.area, 25, `new Rectangle(5,5).area  25`)
+  yield await test(function Rectangle(height, width, member) { return rectangle.area }, 70, 10, 7, 'area')
+  yield await test(function Rectangle(height, width, member) { return square.area }, 25, 5, 5, 'area')
 
-  test(rectangle.checkSquare(), false, `new Rectangle(10,7).checkSquare()  false`)
-  test(square.checkSquare(), true, `new Rectangle(5,5).checkSquare()  true`)
+  if (typeof rectangle.checkSquare === 'function') {
+    yield await test(function Rectangle(height, width, member) { return rectangle.checkSquare() }, false, 10, 7, 'checkSquare()')
+  } else {
+    yield await test(function Rectangle(height, width, member) { return rectangle.checkSquare }, false, 10, 7, 'checkSquare()')
+  }
+
+  if (typeof square.checkSquare === 'function') {
+    yield await test(function Rectangle(height, width, member) { return square.checkSquare() }, true, 5, 5, 'checkSquare()')
+  } else {
+    yield await test(function Rectangle(height, width, member) { return square.checkSquare }, true, 5, 5, 'checkSquare()')
+  }
+
+  yield 'TEST:END'
 }
