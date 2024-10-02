@@ -23,7 +23,7 @@ gun2 = '_______BAN_'
 
 ## Skills
 
-Searching through two sets of data simultaneously is incredibly handy. Searching for breaks in patterns. Finding commonly used sequences of words or characters in user data. Validating a log of events occurring in desired order. Comparing a sequence of actions from players in a game.
+Searching through two sets of data simultaneously is incredibly handy. Scanning for breaks in patterns. Finding commonly used sequences of words or characters in user data. Validating a log of events occurring in desired order. Comparing a sequence of actions from players in a game.
 
  Hopefully, like many challenges, some out of the box thinking. It might seem like trying to spell out `'BANG'` for each `gun` is the solution to this problem, however that will be cumbersome to evaluate. So can we find another condition to check for that happens once `'BANG'` is spelled?
 
