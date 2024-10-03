@@ -1,34 +1,36 @@
-const hints = [
-  'If you don\'t understand split().reverse().join() try something else. Googling the answer is not the point... 👀',
-  'Give yourself a varible to hold the reversed string before you start looping',
-  'You do not have to count or loop backwards that is hard...',
-  'Do not use += or push',
-]
 
 
-function isPalindrome(word) {
-  let reversed = ''
-  for (let i = 0; i < word.length; i++) {
-    let letter = word[i]
-    reversed = letter + reversed
-  }
-  return reversed === word
-}
-
-const solution = isPalindrome.toString()
-
+// test(challenge('racecar'), true, 'racecar')
+// test(challenge('kayak'), true, 'kayak')
+// test(challenge('banana'), false, 'banana')
+// test(challenge('noon'), true, 'noon')
+// test(challenge('deep'), false, 'deep')
+// test(challenge('rotator'), true, 'rotator')
+// test(challenge('nope'), false, 'nope')
+// test(challenge('wow'), true, 'wow')
+// test(challenge('taco cat'), true, 'taco cat')
 
 
-function testSuite(test, challenge) {
+/**
+ * @callback testCallback
+ * @param {function} function - challenge function to run.
+ * @param {*} expected - expected output.
+ * @param {...*} arguments - arguments passed to function.
+ */
 
-  test(challenge('racecar'), true, 'racecar')
-  test(challenge('tacocat'), true, 'tacocat')
-  test(challenge('kayak'), true, 'kayak')
-  test(challenge('banana'), false, 'banana')
-  test(challenge('noon'), true, 'noon')
-  test(challenge('deep'), false, 'deep')
-  test(challenge('rotator'), true, 'rotator')
-  test(challenge('nope'), false, 'nope')
-  test(challenge('wow'), true, 'wow')
+/**
+ * @param {testCallback} test 
+ */
+async function* testSuite(test) {
 
+  yield await test(palindrome, true, 'racecar')
+  yield await test(palindrome, true, 'kayak')
+  yield await test(palindrome, false, 'banana')
+  yield await test(palindrome, false, 'oslo')
+  yield await test(palindrome, true, 'rotator')
+  yield await test(palindrome, false, 'nope')
+  yield await test(palindrome, true, 'taco cat')
+  yield await test(palindrome, true, 'yo banana boy')
+
+  yield 'TEST:END'
 }
