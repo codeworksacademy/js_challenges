@@ -1,44 +1,11 @@
-// Hints are all displayed based on a run count follow a format of more helpful the further down the list you go.
-// Keep code examples out of the hints but do use code language or links to MDN docs for things they might need
-const hints = [
-
-]
-
-// Write a solution to the challenge here in plain JS
-class HeroSolution {
-  constructor(name, health) {
-    this.name = name
-    this.health = health
-    this.maxHealth = health
-    this.exp = 0
-  }
-
-  get healthPercent() {
-    return Math.round((this.health / this.maxHealth) * 100)
-  }
-
-  get level() {
-    if (this.exp >= 500) return 5
-    if (this.exp >= 300) return 4
-    if (this.exp >= 150) return 3
-    if (this.exp >= 50) return 2
-    return 1
-  }
-}
 
 
-// export out the function to be visible in the console
-const solution = HeroSolution.toString()
-
-// here is where you can write the multiple test cases for the challenge
 
 function testSuite(test, challenge) {
   //format follows: challange(<actual input sent to the students function>), expected output, given input)
   // try to come up with atleast 5
   //for more challenge try to mix up data types
 
-  const slate = new challenge('Slate Slabrock', 25)
-  const swift = new challenge('Swift Ironstag', 15)
 
 
   test(slate.name, 'Slate Slabrock', `slate.name | 'Slate Slabrock'`)
@@ -69,4 +36,52 @@ function testSuite(test, challenge) {
   test(swift.level, 5, `swift.level | 5`)
 
 
+}
+
+/**
+ * @callback testCallback
+ * @param {function} function - challenge function to run.
+ * @param {*} expected - expected output.
+ * @param {...*} arguments - arguments passed to function.
+ */
+
+/**
+ * @param {testCallback} test 
+ */
+async function* testSuite(test) {
+
+  const slateStats = ['Slate Slabrock', 25]
+  const slate = new Hero(...slateStats)
+
+  const swiftStats = ['Swift Ironstag', 15]
+  const swift = new Hero(...swiftStats)
+
+  yield await test(function Hero(name, health, member) { return slate.name }, 'Slate Slabrock', ...slateStats, 'name')
+  yield await test(function Hero(name, health, member) { return slate.health }, 25, ...slateStats, 'health')
+  yield await test(function Hero(name, health, member) { return slate.maxHealth }, 25, ...slateStats, 'maxHealth')
+  yield await test(function Hero(name, health, member) { return slate.healthPercent }, 100, ...slateStats, 'healthPercent')
+  slate.health -= 10
+  yield await test(function Hero(name, health, member) { return slate.healthPercent }, 60, ...slateStats, 'healthPercent')
+  slate.health -= 5
+  yield await test(function Hero(name, health, member) { return slate.healthPercent }, 40, ...slateStats, 'healthPercent')
+  slate.health += 12
+  yield await test(function Hero(name, health, member) { return slate.healthPercent }, 88, ...slateStats, 'healthPercent')
+
+
+  yield await test(function Hero(name, health, member) { return swift.name }, 'Swift Ironstag', ...swiftStats, 'name')
+  yield await test(function Hero(name, health, member) { return swift.exp }, 0, ...swiftStats, 'exp')
+  yield await test(function Hero(name, health, member) { return swift.level }, 1, ...swiftStats, 'level')
+  swift.exp += 49
+  yield await test(function Hero(name, health, member) { return swift.level }, 1, ...swiftStats, 'level')
+  swift.exp += 50
+  yield await test(function Hero(name, health, member) { return swift.level }, 2, ...swiftStats, 'level')
+  swift.exp += 175
+  yield await test(function Hero(name, health, member) { return swift.level }, 3, ...swiftStats, 'level')
+  swift.exp += 175
+  yield await test(function Hero(name, health, member) { return swift.level }, 4, ...swiftStats, 'level')
+  swift.exp += 65
+  yield await test(function Hero(name, health, member) { return swift.level }, 5, ...swiftStats, 'level')
+
+
+  yield 'TEST:END'
 }
