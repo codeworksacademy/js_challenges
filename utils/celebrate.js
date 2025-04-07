@@ -69,3 +69,5 @@ function celebrate() {
 
   animateConfetti();
 }
+
+window['celebrate'] = celebrate

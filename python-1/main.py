@@ -2,8 +2,8 @@
 import asyncio
 import json
 import inspect
+from pyscript import document, window
 from testSuite import test_suite
-from pyscript import document
 
 class Table:
     def __init__(self, id, *cols):
@@ -105,7 +105,6 @@ class TestSuite:
 
     async def test_yield(self):
         for fn, expected, args in test_suite():
-            print('🦫',expected, args)
             await self.do_test(fn, expected, args)
 
     async def run_tests(self):
@@ -118,7 +117,7 @@ class TestSuite:
         self.draw_stats()
 
     async def celebrate(self):
-        document.getElementById('output').innerHTML += "<p>🎉 All tests passed!</p>"
+        window.celebrate()
 
     async def start(self):
         await self.run_tests()
